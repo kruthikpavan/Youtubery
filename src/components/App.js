@@ -5,20 +5,29 @@ import VideoDetails from "./VideoDetails";
 import VideoList from "./VideoList";
 export default function App() {
   const [videos,setVideos]= useState([])
+  const [selectedVideo,setSelectedVideo]= useState(null)
   async function  onVideoNameSubmit(term) {
     const response= await youtube.get("/search", {
       params: {
         q: term,
       },
     });
-    console.log(response);
     setVideos(response.data.items)
+  }
+
+  function onVideoSelect(video){
+    setSelectedVideo(video)
+
   }
   return (
     <>
       <div className="ui container">
         <SearchBar onVideoNameSubmit={onVideoNameSubmit} />
-        <VideoList videos={videos} />
+        <div className="container">
+        <VideoDetails video={selectedVideo}></VideoDetails>
+        <VideoList videos={videos} onVideoSelect={onVideoSelect} />
+        </div>
+        
       </div>
     </>
   );

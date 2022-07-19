@@ -3,7 +3,7 @@ import React,{useState} from 'react'
 
 export default function SearchBar({onVideoNameSubmit}) {
 
-    const [videoName,setVideoName]= useState('stephen grider')
+    const [videoName,setVideoName]= useState()
     function handleSearch(value){
         setVideoName(value)
     }
