@@ -1,0 +1,21 @@
+.video-item{
+    display: flex;
+    align-items: center;
+    border-bottom: 0.5px solid rgb(209, 194, 194);
+    margin: 0.5rem;
+    cursor: pointer;
+    
+    
+}
+
+.video-desc{
+    margin: 0.5rem;
+
+}
+
+.video-item img{
+    max-width: 180px;
+    margin: 0.5rem;
+    border-radius: 4%;
+
+}

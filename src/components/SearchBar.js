@@ -1,19 +1,27 @@
 import React,{useState} from 'react'
 
 
-export default function SearchBar() {
+export default function SearchBar({onVideoNameSubmit}) {
 
     const [videoName,setVideoName]= useState('stephen grider')
     function handleSearch(value){
         setVideoName(value)
     }
+
+    function handleFormSubmit(event){
+        event.preventDefault()
+        onVideoNameSubmit(videoName)
+
+        //TODO:- HANDLE YOUTUBE API
+
+    }
   return (
     <div className='ui segment'>
-        <div>
-            {videoName}
-        </div>
+     
 
-        <form className='ui form'>
+        <form  onSubmit={(e)=>{
+            handleFormSubmit(e)
+        }}  className='ui form'>
             <div className="field">
             <input type='text'  placeholder='Search for video'
             value={videoName}
@@ -21,7 +29,8 @@ export default function SearchBar() {
                 handleSearch(e.target.value);
             }}
             ></input>
-            <button className='ui button'>Search</button>
+            
+ 
             </div>
         </form>
        
